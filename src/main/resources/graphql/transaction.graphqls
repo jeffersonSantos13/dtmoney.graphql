@@ -1,0 +1,27 @@
+input TransactionInput {
+    title: String!,
+    amount: Float!,
+    type: TransactionType!,
+    category: String
+}
+
+type TransactionResponse {
+    id: ID,
+    title: String,
+    amount: Float,
+    type: String,
+    category: String
+}
+
+enum TransactionType {
+    DEPOSIT
+    WITHDRAW
+}
+
+type Query {
+    listAllTransactions: [TransactionResponse]!
+}
+
+type Mutation {
+    createTransaction(input: TransactionInput): TransactionResponse
+}
