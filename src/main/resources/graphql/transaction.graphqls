@@ -13,13 +13,25 @@ type TransactionResponse {
     category: String
 }
 
+type PageInfo {
+    page: Int,
+    totalCount: Int,
+    hasNextPage: Boolean,
+    hasPreviousPage: Boolean,
+}
+
+type TransactionPageResponse {
+    pageInfo: PageInfo,
+    transactionResponse: [TransactionResponse]!
+}
+
 enum TransactionType {
     DEPOSIT
     WITHDRAW
 }
 
 type Query {
-    listAllTransactions: [TransactionResponse]!
+    listAllTransactions(page: Int = 0, size: Int = 10): TransactionPageResponse!
 }
 
 type Mutation {

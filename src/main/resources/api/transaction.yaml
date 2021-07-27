@@ -44,53 +44,6 @@ paths:
             $ref: '#/definitions/TransactionResponse'
         '404':
           description: Erro ao tentar incluir uma transação
-    get:
-      tags:
-        - transaction
-      summary: Retorna todas as transações
-      description: Retorna todas as transações
-      operationId: getAllTransactions
-      produces:
-        - "application/json"
-      responses:
-        "200":
-          description: successful operation
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/TransactionResponse"
-        "404":
-          description: Erro, não encontrado nenhuma transação
-  /transactions/{id}:
-    put:
-      tags:
-        - transaction
-      summary: Atualiza a transação
-      description: Atualiza a transação.
-      operationId: updateTransaction
-      produces:
-        - "application/json"
-      parameters:
-        - name: id
-          in: path
-          description: Id da transação
-          required: true
-          type: integer
-        - in: body
-          name: body
-          description: Atualizar transação com objeto.
-          required: true
-          schema:
-            $ref: "#/definitions/TransactionInputT"
-      responses:
-        "200":
-          description: successful operation
-          schema:
-            $ref: "#/definitions/TransactionResponse"
-        "400":
-          description: Id da transação inválida ou não existe.
-        "404":
-          description: Transação não encontrada.
 definitions:
   TransactionInputT:
     type: object
@@ -122,12 +75,6 @@ definitions:
         type: string
       category:
         type: string
-
-  BooleanResponse:
-    type: boolean
-    properties:
-      saved:
-        type: boolean
 
 externalDocs:
   description: TBD
