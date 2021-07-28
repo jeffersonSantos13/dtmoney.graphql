@@ -1,4 +1,5 @@
 input TransactionInput {
+    id: ID,
     title: String!,
     amount: Float!,
     type: TransactionType!,
@@ -35,5 +36,7 @@ type Query {
 }
 
 type Mutation {
-    createTransaction(input: TransactionInput): TransactionResponse
+    createTransaction(input: TransactionInput): TransactionResponse!
+    updateTransaction(input: TransactionInput): TransactionResponse!
+    deleteTransaction(id: ID!): Boolean!
 }
