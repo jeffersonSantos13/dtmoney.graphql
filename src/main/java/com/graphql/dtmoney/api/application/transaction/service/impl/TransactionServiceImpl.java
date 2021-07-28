@@ -69,7 +69,7 @@ public class TransactionServiceImpl implements TransactionService {
   }
 
   private Transaction buildTransactionInputToTransaction(TransactionInput input) {
-    var transaction = new Transaction();
+    Transaction transaction = new Transaction();
 
     transaction.setAmount(StringUtils.isEmpty(input.getAmount()) ? 0.0 : Double.valueOf(input.getAmount()));
     transaction.setCategory(StringUtils.isEmpty(input.getCategory()) ? CATEGORY : input.getCategory());

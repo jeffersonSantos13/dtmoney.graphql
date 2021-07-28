@@ -3,8 +3,8 @@ package com.graphql.dtmoney.api.application.transaction.graphql;
 import br.com.web.transaction.api.model.TransactionResponse;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.graphql.dtmoney.api.application.transaction.entity.Transaction;
 import com.graphql.dtmoney.api.application.transaction.service.TransactionService;
-import com.graphql.dtmoney.api.application.transaction.service.impl.TransactionServiceImpl;
 import com.graphql.dtmoney.api.application.transaction.dto.TransactionPageResponse;
 import com.graphql.dtmoney.api.application.transaction.input.TransactionInput;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class TransactionGraphQL implements GraphQLQueryResolver, GraphQLMutation
   }
 
   public TransactionResponse createTransaction(@Valid TransactionInput input) {
-    var transaction = transactionService.save(input);
+    Transaction transaction = transactionService.save(input);
 
     return new TransactionResponse()
             .id(transaction.getId())
@@ -38,7 +38,7 @@ public class TransactionGraphQL implements GraphQLQueryResolver, GraphQLMutation
   }
 
   public TransactionResponse updateTransaction(@Valid TransactionInput input) {
-    var transaction = transactionService.update(input);
+    Transaction transaction = transactionService.update(input);
 
     return new TransactionResponse()
             .id(transaction.getId())
